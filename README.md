@@ -20,7 +20,7 @@ Launches the test runner in the interactive watch mode.
 
 ## Structure
 
-{{{
+```
 project-root/
 │
 ├── src/
@@ -45,7 +45,7 @@ project-root/
 │   └── ...
 │
 └── ...
-}}}
+```
 
 ## Description
 
