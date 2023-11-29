@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Canvas Picker</title>
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div class="root">
+      <div class="tools">
+        <button class="dropper-btn">
+          <img src="svg/icon-color-picker.svg" alt="Pick Color" />
+        </button>
+        <div class="color-wrap">
+          <span class="color-preview"></span>
+          <span class="color"></span>
+        </div>
+      </div>
+      <div class="canvas-container">
+        <canvas id="canvas-picker"></canvas>
+        <span id="color-lens"></span>
+        <canvas id="canvas-lens" width="160" height="160"></canvas>
+      </div>
+    </div>
+    <script src="bundle.js"></script>
+  </body>
+</html>
