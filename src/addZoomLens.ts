@@ -33,64 +33,61 @@ function addZoomLens(
     }
   })
 
-  // Add the lens by mousemove without debounce using requestAnimationFrame
-  canvasOriginal.addEventListener(
-    'mousemove',
-    debounce(function addLensByMouseMove(event) {
-      if (showDropper) {
-        requestAnimationFrame(() => {
-          // Get the mouse position
-          const containerRect = canvasOriginal.getBoundingClientRect()
-          const mouseX = event.clientX - containerRect.left
-          const mouseY = event.clientY - containerRect.top
+  // Add the lens by mousemove
+  canvasOriginal.addEventListener('mousemove', function (event) {
+    if (showDropper) {
+      requestAnimationFrame(() => {
+        // Get the mouse position
+        const containerRect = canvasOriginal.getBoundingClientRect()
+        const mouseX = event.clientX - containerRect.left
+        const mouseY = event.clientY - containerRect.top
 
-          // Set styles
-          canvas.style.display = 'block'
-          textElement.style.display = 'flex'
-          context.fillStyle = 'white'
-          context.fillRect(0, 0, canvasSize, canvasSize)
+        // Set styles
+        canvas.style.display = 'block'
+        textElement.style.display = 'flex'
+        context.fillStyle = 'white'
+        context.fillRect(0, 0, canvasSize, canvasSize)
 
-          // turn off image aliasing
+        // turn off image aliasing
 
-          context.imageSmoothingEnabled = false
+        context.imageSmoothingEnabled = false
 
-          // Draw a zoomed background
-          context.drawImage(
-            canvasOriginal,
-            mouseX - canvasSize / zoom,
-            mouseY - canvasSize / zoom,
-            canvasSize + shiftToCenter,
-            canvasSize + shiftToCenter,
-            0 - canvasSize / 2,
-            0 - canvasSize / 2,
-            canvasSize * zoom,
-            canvasSize * zoom,
-          )
+        // Draw a zoomed background
+        context.drawImage(
+          canvasOriginal,
+          mouseX - canvasSize / zoom,
+          mouseY - canvasSize / zoom,
+          canvasSize + shiftToCenter,
+          canvasSize + shiftToCenter,
+          0 - canvasSize / 2,
+          0 - canvasSize / 2,
+          canvasSize * zoom,
+          canvasSize * zoom,
+        )
 
-          // Get the hex color by mousemove
-          hex = getHexColor(contextOriginal, mouseX, mouseY)
+        // Get the hex color by mousemove
+        hex = getHexColor(contextOriginal, mouseX, mouseY)
 
-          // Add border
-          if (hex) {
-            createLensCircle(canvas, context, hex)
-          }
+        // Add border
+        if (hex) {
+          createLensCircle(canvas, context, hex)
+        }
 
-          // Update the canvas position based on mouse coordinates
-          canvas.style.transform = `translate(${
-            mouseX - canvasSize / 2 + shiftToCenter
-          }px, ${mouseY - canvasSize / 2 + shiftToCenter}px)`
+        // Update the canvas position based on mouse coordinates
+        canvas.style.transform = `translate(${
+          mouseX - canvasSize / 2 + shiftToCenter
+        }px, ${mouseY - canvasSize / 2 + shiftToCenter}px)`
 
-          // Add color data
-          if (hex) {
-            addColorData(textElement, mouseX, mouseY, hex)
-          }
-        })
-      }
-    }, 4),
-  )
+        // Add color data
+        if (hex) {
+          addColorData(textElement, mouseX, mouseY, hex)
+        }
+      })
+    }
+  })
 
   // Save color by click
-  canvasOriginal.addEventListener('click', function saveColorByClick() {
+  canvasOriginal.addEventListener('click', function () {
     if (hex && showDropper) {
       colorElement.textContent = hex
       colorPreview.style.setProperty('background-color', hex)
@@ -98,7 +95,7 @@ function addZoomLens(
   })
 
   // Hide the zoom element if it's not over the canvas
-  document.addEventListener('mousemove', function hideLensByMouseMove(event) {
+  document.addEventListener('mousemove', function (event) {
     if ((event.target as HTMLElement).tagName !== 'CANVAS') {
       canvas.style.display = 'none'
       textElement.style.display = 'none'

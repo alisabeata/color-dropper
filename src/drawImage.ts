@@ -7,7 +7,7 @@ function drawImage(
 ): void {
   const img = new Image()
   img.src = url
-  img.addEventListener('load', function imageIsLoaded() {
+  img.addEventListener('load', function () {
     const windowsWidth = window.innerWidth
     const originalWidth = img.width
     const originalHeight = img.height
