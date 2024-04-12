@@ -31,17 +31,17 @@ function drawImage(url, canvas, context) {
     const img = new Image();
     img.src = url;
     img.addEventListener('load', function imageIsLoaded() {
-        const windowsWidth = window.innerWidth;
+        const windowWidth = window.innerWidth;
         const originalWidth = img.width;
         const originalHeight = img.height;
         // Calculate the corresponding height to maintain the original aspect ratio
         const aspectRatio = originalWidth / originalHeight;
-        const newHeight = windowsWidth / aspectRatio;
+        const newHeight = windowWidth / aspectRatio;
         // Set canvas size to match image
-        canvas.width = windowsWidth;
+        canvas.width = windowWidth;
         canvas.height = newHeight;
         // Draw Image
-        context.drawImage(img, 0, 0, windowsWidth, newHeight);
+        context.drawImage(img, 0, 0, windowWidth, newHeight);
         // Add Lens
         (0, addZoomLens_1.addZoomLens)(canvas, context);
     });
