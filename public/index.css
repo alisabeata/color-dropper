@@ -208,6 +208,9 @@ button.dropper-btn img {
 .color-wrap {
   display: flex;
   align-items: center;
+  background: white;
+  border-radius: 6px;
+  padding: 3px 10px 3px 13px;
 }
 
 .color-preview {
@@ -219,7 +222,7 @@ button.dropper-btn img {
 
 .color {
   margin-left: 8px;
-  min-width: 80px;
+  min-width: 63px;
 }
 
 .canvas-container {
