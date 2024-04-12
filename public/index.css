@@ -193,7 +193,7 @@ button.dropper-btn {
   left: 20px;
   margin: auto;
   border: 0 none;
-  background: #eee;
+  background: white;
   border-radius: 50%;
   padding: 15px;
   cursor: pointer;
@@ -224,6 +224,7 @@ button.dropper-btn img {
 
 .canvas-container {
   position: relative;
+  max-width: 1000px;
   z-index: 11;
 }
 
